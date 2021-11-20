@@ -1,15 +1,15 @@
-//dogs are cute and funny and poop
-
-//dogs are cute and funny and fuzzy
-
 
 window.addEventListener('load', () =>{
-    const canvas = document.querySelector("#canvas");
-    const context = canvas.getContext("2d");
-
+    var canvas = document.querySelector("#canvas");
+    var context = canvas.getContext("2d");
     //sizing
-    //canvas.setAttribute('width', canvas.parentNode.offsetWidth);
-    //canvas.setAttribute('height', canvas.parentNode.offsetHeight);
+    canvas.setAttribute('width', canvas.parentNode.offsetWidth);
+    canvas.setAttribute('height', canvas.width*1.294);
+
+    context.fillStyle = "white";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    var rect = canvas.getBoundingClientRect();
 
     let painting = false;
 
@@ -23,24 +23,47 @@ window.addEventListener('load', () =>{
     }
     function draw(e) {
         if (!painting) return;
-        context.lineWidth = 10;
+        context.lineWidth = 5;
         context.lineCap = 'round';
         context.strokeStyle = 'black';
 
-        context.lineTo(e.clientX, e.clientY);
+        context.lineTo(e.clientX - rect.left, e.clientY - rect.top);
         context.stroke();
         context.beginPath();
-        context.moveTo(e.clientX, e.clientY);
+        context.moveTo(e.clientX - rect.left, e.clientY - rect.top);
     }
 
     canvas.addEventListener("mousedown", startPos);
     canvas.addEventListener("mouseup", endPos);
     canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseout", endPos);
 
 });
 
+//Function run on click of Refresh button. Clears the canvas rectangle and refills the white background
 function Refresh() {
-    const canvas = document.querySelector("#canvas");
-    const context = canvas.getContext("2d");
-    context.clearRect(0,0, canvas.width, canvas.height);
+    var canvas = document.querySelector("#canvas");
+    var context = canvas.getContext("2d");
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    context.fillStyle = "white";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+//Function run on click of Submit button. Automatically downloads the canvas content as a png file, then clears the canvas rectangle and refills the white background
+function Submit() {
+    var canvas = document.querySelector("#canvas");
+    var context = canvas.getContext("2d");
+    
+    var img = document.createElement('a');
+    img.download = 'download.png';
+    img.href = canvas.toDataURL("image/png");
+    img.click();
+    img.delete;
+    
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    context.fillStyle = "white";
+    context.fillRect(0, 0, canvas.width, canvas.height);
 }
