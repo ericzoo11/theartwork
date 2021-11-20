@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 //dogs are cute and funny and poop
+=======
+//dogs are cute and funny and fuzzy
+>>>>>>> 754f2fbc74ec3df0a917239996f9a02a1df789eb
 
 window.addEventListener('load', () =>{
     const canvas = document.querySelector("#canvas");
