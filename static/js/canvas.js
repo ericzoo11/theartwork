@@ -1,4 +1,4 @@
-//dogs are cute
+//dogs are cute and funny
 
 window.addEventListener('load', () =>{
     const canvas = document.querySelector("#canvas");
