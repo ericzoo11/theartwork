@@ -7,20 +7,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The Art-Work</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro&display=swap" rel="stylesheet">
         <link rel='stylesheet' href='{% static "/css/main.css" %}'>
     </head>
     <body>
-    <div class="wrapper">
-        <h1>Welcome to The Art-Work</h1>
+        <div class="wrapper">
+            <h1 id="homeTitle">THE ART-WORK</h1>
         
-
-        <canvas id="canvas"></canvas>
-        <script src = "{% static 'js/canvas.js' %}"></script>
+            <canvas id="canvas"></canvas>
+            <script src = "{% static 'js/canvas.js' %}"></script>
         
-        <div class="buttons">
-            <button onclick="Refresh()" id="button1">Refresh</button>
-            <button onclick="Submit()" id="button2">Submit</button>
+            <div class="buttons">
+                <button onclick="Refresh()" id="button1">Refresh</button>
+                <button onclick="Submit()" id="button2">Submit</button>
+            </div>
         </div>
-    </div>
     </body>
 </html>

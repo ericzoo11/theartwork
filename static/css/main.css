@@ -1,18 +1,23 @@
-body {
-    width: 100%;
+html {
     height: 100%;
-    background: white;
+    margi: auto;
+}
+body {
+    /*width: 1000px;*/
+    margin: 10px;
+    min-height: 100%;
+    background: #37465D;;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
-
 .wrapper {
-    color: #0a2c1a;
-    padding: 10px 20px;
-    position: relative;
-    top: 0;
+    margin: auto;
+    color: white;
+    padding: 20px 20px;
+    position: absolute;
+    justify-content: center;
 }
 
 #button1{
@@ -35,7 +40,16 @@ body {
 }
 
 #canvas {
-    border: 5px solid black;
+
+    border: 5px solid #F65353;
+    margin: auto;
     /*top:0px;
     height: 100%;*/
+}
+
+#homeTitle{
+    margin: auto;
+    color: white;
+    font-size: 40px;
+    font-family: 'Be Vietnam Pro', sans-serif;
 }
