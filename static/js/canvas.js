@@ -1,4 +1,3 @@
-
 window.addEventListener('load', () =>{
     var canvas = document.querySelector("#canvas");
     var context = canvas.getContext("2d");
@@ -40,8 +39,8 @@ window.addEventListener('load', () =>{
 
 });
 
-//Function run on click of Refresh button. Clears the canvas rectangle and refills the white background
-function Refresh() {
+//Function run on click of Clear button. Clears the canvas rectangle and refills the white background
+function Clear() {
     var canvas = document.querySelector("#canvas");
     var context = canvas.getContext("2d");
 
@@ -56,12 +55,24 @@ function Submit() {
     var canvas = document.querySelector("#canvas");
     var context = canvas.getContext("2d");
     
-    var img = document.createElement('a');
+    /*var img = document.createElement('a');
     img.download = 'download.png';
     img.href = canvas.toDataURL("image/png");
     img.click();
-    img.delete;
-    
+    img.delete;*/
+
+    var url = "http://127.0.0.1:8000/submit";
+
+    var dataURL = canvas.toDataURL();
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            imageBase64: dataURL
+        }
+    });
+
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     context.fillStyle = "white";

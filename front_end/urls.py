@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from canvas.views import mainPage
+from canvas.views import sendImage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('submit', sendImage, name = 'send'),
     path('', mainPage),
 ]
