@@ -2,8 +2,9 @@ window.addEventListener('load', () =>{
     var canvas = document.querySelector("#canvas");
     var context = canvas.getContext("2d");
     //sizing
-    canvas.setAttribute('width', canvas.parentNode.offsetWidth);
-    canvas.setAttribute('height', canvas.width*1.294);
+    var width = canvas.parentNode.offsetWidth;
+    canvas.setAttribute('width', width - 10);
+    canvas.setAttribute('height', width*1.294 - 10);
 
     context.fillStyle = "white";
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -26,10 +27,10 @@ window.addEventListener('load', () =>{
         context.lineCap = 'round';
         context.strokeStyle = 'black';
 
-        context.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+        context.lineTo(e.clientX - rect.left - 2, e.clientY - rect.top - 4);
         context.stroke();
         context.beginPath();
-        context.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+        context.moveTo(e.clientX - rect.left - 2, e.clientY - rect.top - 4);
     }
 
     canvas.addEventListener("mousedown", startPos);
