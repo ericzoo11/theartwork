@@ -21,11 +21,11 @@ def sendImage(request):
         imgArray = np.array(imgPIL.convert('L'))
         print(imgArray.shape)
         print(imgArray.dtype)
-
-        HOST, PORT = socket.gethostname(), 1234
+        print(imgArray);
+        HOST, PORT = '192.168.0.123', 13000
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((HOST, PORT))
-        s.send(bytearray(imgArray))
+        s.send(imgArray.astype(np.int).tobytes(order='C'))
 
     return render(request, "main.html", {})
