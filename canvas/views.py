@@ -19,13 +19,20 @@ def sendImage(request):
         imgData = re.search(r'base64,(.*)', imgB64).group(1)
         imgPIL = Image.open(io.BytesIO(base64.b64decode(imgData)))
         imgArray = np.array(imgPIL.convert('L'))
-        print(imgArray.shape)
-        print(imgArray.dtype)
-        print(imgArray);
+        
+        width = imgArray.shape[1]
+        height = imgArray.shape[0]
+        dims = np.array([width, height]).astype('uint16')
+
+        print(imgArray)
+        print(width, height, imgArray.dtype)        
+        
+        #HOST, PORT = socket.gethostname(), 1234        ##Test Port
         HOST, PORT = '192.168.0.123', 13000
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((HOST, PORT))
+        s.send(dims.astype(np.int).tobytes(order='C'))
         s.send(imgArray.astype(np.int).tobytes(order='C'))
 
     return render(request, "main.html", {})
