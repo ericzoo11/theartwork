@@ -18,16 +18,39 @@
         <div class="row">
             
             <div class="col">
-                One 
+                 <h1 style="color:#F65353;">Inspirations</h1>
+                 <div class=frame>
+                    <img id="disneyImage" src='{% static "images/disney.png" %}' alt="Mickey" style="width:150px;border-radius: 20%;">
+                    <div id="myModal" class="modal">
+
+                        <!-- The Close Button -->
+                        <span class="close">&times;</span>
+                      
+                        <!-- Modal Content (The Image) -->
+                        <img class="modal-content" id="img01">
+                      
+                        <!-- Modal Caption (Image Text) -->
+                        <div id="caption"></div>
+                      </div>
+                </div>
+                <div class=frame>
+                    <img id="disneyImage" src='{% static "images/basketball.jpeg" %}' alt="basketball" style="width:150px;border-radius: 20%;">
+                </div>
+                <div class=frame>
+                    <img id="disneyImage" src='{% static "images/dog.jpeg" %}' alt="dog" style="width: 150px;border-radius: 20%;">
+                </div>
+                <div class=frame>
+                    <img id="disneyImage" src='{% static "images/andrew.png" %}' alt="andrew" style="width:150px;border-radius: 20%;">
+                </div>
             </div>
-            <div class="col">
+            <div class="col" id ="middle">
                 <div class="canvasWrapper">
                     <h1 id="homeTitle">THE ART-WORK</h1>
                     <canvas id="canvas"></canvas>
                     <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
                     <script src = "{% static 'js/canvas.js' %}"></script>
                     <div class="buttons">
-                        <button onclick="Clear()">Clear</button>
+                        <button onclick="Clear()" id="button1"> Clear </button>
                         <button onclick="Submit()" id="button2">Submit</button>
                     </div>
                 </div>

@@ -24,20 +24,25 @@ body {
     max-width: 100%;
     margin: auto;
 }
+
 #button1{
-    color: blue;
+    color: #F65353;
     white-space: nowrap;
-    background-color: green;
+    background-color: lightgrey;
     border: 0;
-    border-radius: 2px;
+    border-radius: 3px;
+    margin:10px;
+    padding: 8px 20px;
     transition: all 150ms ease-out;
 }
 #button2{
-    color: red;
+    color: #F65353;
     white-space: nowrap;
-    background-color:purple;
+    background-color:lightgray;
     border: 0;
-    border-radius: 2px;
+    border-radius: 3px;
+    margin:10px;
+    padding: 8px 20px;
     transition: all 150ms ease-out;
 }
 
@@ -52,4 +57,11 @@ body {
     color: white;
     font-size: 40px;
     font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+#middle{
+    margin-top: 150px;
+}
+.frame {
+    margin-top: 50px;
 }
