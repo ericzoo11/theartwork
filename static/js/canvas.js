@@ -27,10 +27,10 @@ window.addEventListener('load', () =>{
         context.lineCap = 'round';
         context.strokeStyle = 'black';
 
-        context.lineTo(e.clientX - rect.left - 2, e.clientY - rect.top - 4);
+        context.lineTo(e.clientX - rect.left - 5, e.clientY - rect.top - 8);
         context.stroke();
         context.beginPath();
-        context.moveTo(e.clientX - rect.left - 2, e.clientY - rect.top - 4);
+        context.moveTo(e.clientX - rect.left - 5, e.clientY - rect.top - 8);
     }
 
     canvas.addEventListener("mousedown", startPos);

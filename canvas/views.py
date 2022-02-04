@@ -14,7 +14,7 @@ def mainPage(request):
 
 @csrf_exempt
 def sendImage(request):
-    if request.is_ajax and request.method == "POST":
+    if request.method == "POST":
         imgB64 = request.POST['imageBase64']
         imgData = re.search(r'base64,(.*)', imgB64).group(1)
         imgPIL = Image.open(io.BytesIO(base64.b64decode(imgData)))
