@@ -53,17 +53,16 @@ body {
 }
 
 #homeTitle{
-    margin: auto;
+    margin-top: 10px;
     color: white;
     font-size: 40px;
+
     font-family: 'Be Vietnam Pro', sans-serif;
 }
 
-#middle{
-    margin-top: 150px;
-}
+
 .frame {
-    margin-top: 50px;
+    margin-top: 40px;
 }
 /* Style the Image Used to Trigger the Modal */
 #disneyImage {
@@ -72,8 +71,12 @@ body {
     transition: 0.3s;
   }
   
-  #disneyImage:hover {opacity: 0.7;}
-  
+  /* opacity of image changes to 70% when hover overing them */
+  #myImg:hover {opacity: 0.7;}
+  #myImg1:hover {opacity: 0.7;}
+  #myImg2:hover {opacity: 0.7;}
+  #myImg3:hover {opacity: 0.7;}
+
   /* The Modal (background) */
   .modal {
     display: none; /* Hidden by default */
@@ -112,7 +115,7 @@ body {
   /* Add Animation - Zoom in the Modal */
   .modal-content, #caption { 
     animation-name: zoom;
-    animation-duration: 0.6s;
+    animation-duration: 0.5s;
   }
   
   @keyframes zoom {
