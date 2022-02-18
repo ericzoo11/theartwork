@@ -7,6 +7,25 @@ from PIL import Image
 import io
 import socket
 import sys
+import numpy as np
+import cv2
+import math
+
+def getContours(image):
+    images = np.array(image)
+    canny_image = cv2.cvtColor(images, cv2.COLOR_BGR2GRAY)
+    edges_canny =  cv2.Canny(canny_image, 7, 51)
+    contours, heierarchy = cv2.findContours(edges_canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contoured_image = canny_image
+    #print(contours[5])
+    output = open("test.txt", 'w')
+    count = 0
+    for contour in contours:
+        for con in contour:
+            np.savetxt(output, con,fmt='%d')
+        output.write('----------\n')
+        count+=1
+    output.close()
 
 # Create your views here.
 def mainPage(request):
@@ -19,7 +38,7 @@ def sendImage(request):
         imgData = re.search(r'base64,(.*)', imgB64).group(1)
         imgPIL = Image.open(io.BytesIO(base64.b64decode(imgData)))
         imgArray = np.array(imgPIL.convert('L'))
-        
+        getContours(imgPIL)
         width = imgArray.shape[1]
         height = imgArray.shape[0]
         dims = np.array([width, height]).astype('uint16')
@@ -29,10 +48,14 @@ def sendImage(request):
         
         #HOST, PORT = socket.gethostname(), 1234        ##Test Port
         HOST, PORT = '192.168.0.123', 13000
-
+        newline = "\n"
+        file = open("test.txt", "r")
+        data = file.read()
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((HOST, PORT))
-        s.send(dims.astype(np.int).tobytes(order='C'))
-        s.send(imgArray.astype(np.int).tobytes(order='C'))
-
-    return render(request, "main.html", {})
+        s.send(str(width).encode("utf-8"))
+        s.send(newline.encode("utf-8"))
+        s.send(str(height).encode("utf-8"))
+        s.send(newline.encode("utf-8"))
+        s.send(data.encode("utf-8"))
+        return render(request, "main.html", {})
