@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from canvas.views import mainPage
 from canvas.views import sendImage
+from canvas.views import resetCurrent
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('submit', sendImage, name = 'send'),
+    path('clear', resetCurrent, name = 'clear'),
     path('', mainPage),
 ]

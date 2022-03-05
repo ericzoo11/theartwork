@@ -51,6 +51,33 @@ function Clear() {
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+//Function run on click of Clear Current button. Clears the Current Submissions image
+function Current() {
+    var url = "http://127.0.0.1:8000/clear";
+    
+    $.ajax({
+        type: "POST",
+        url: url,
+    });
+
+    var timeStamp = new Date().getTime();
+
+    var curr = document.getElementById("myImg4");
+    var currSrc = curr.src;
+
+    curr.src = currSrc + '?t=' + timeStamp;
+}
+
+//Function run on click of Clear Current button. Clears the Current Submissions image
+function Update() {
+    var timeStamp = new Date().getTime();
+
+    var curr = document.getElementById("myImg4");
+    var currSrc = curr.src;
+
+    curr.src = currSrc + '?t=' + timeStamp;
+}
+
 //Function run on click of Submit button. Automatically downloads the canvas content as a png file, then clears the canvas rectangle and refills the white background
 function Submit() {
     var canvas = document.querySelector("#canvas");
@@ -78,7 +105,15 @@ function Submit() {
 
     context.fillStyle = "white";
     context.fillRect(0, 0, canvas.width, canvas.height);
+    
+    var timeStamp = new Date().getTime();
+
+    var curr = document.getElementById("myImg4");
+    var currSrc = curr.src;
+
+    curr.src = currSrc + '?t=' + timeStamp;
 }
+
 // Get the modal
 var modal = document.getElementById("myModal");
 var img = document.getElementById("myImg");
@@ -88,7 +123,7 @@ var captionText = document.getElementById("caption");
 document.addEventListener('click', function(e) {
     var targetId = e.target.id;
     //simple id filter
-    if(targetId == "myImg" || targetId == "myImg1" || targetId == "myImg2" || targetId == "myImg3"){
+    if(targetId == "myImg" || targetId == "myImg1" || targetId == "myImg2" || targetId == "myImg3" || targetId == "myImg4"){
         img = document.getElementById(e.target.id);
         console.log("img")
         modal.style.display = "block";

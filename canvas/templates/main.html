@@ -46,7 +46,7 @@
             <div class="col" id ="middle">
                 <div class="canvasWrapper">
                     <h1 id="homeTitle">THE ART-WORK</h1>
-                    <h1 id="canvasTitle" style="color:white">CANVAS</h1>
+                    <!-- <h1 id="canvasTitle" style="color:white">CANVAS</h1> -->
                     <canvas id="canvas"></canvas>
                     <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
                     <script src = "{% static 'js/canvas.js' %}"></script>
@@ -57,7 +57,16 @@
                 </div>
             </div>
             <div class="col">
-                <h1 style="color:#F65353; margin-top: 50px;">Past Submissions</h1>
+                <h1 style="color:#F65353; margin-top: 50px;">Current Submissions</h1>
+                <div class=frame>
+                    <img id="myImg4" src='{% static "images/current.png" %}' alt="current" style="width:250px;border-radius: 20%;">
+                </div>
+                <div class="buttons">
+                    <button onclick="Update()" id="button3">Update Current</button>
+                </div>
+                <div class="buttons">
+                    <button onclick="Current()" id="button3">Clear Current</button>
+                </div>
             </div>
             
         </div>    
