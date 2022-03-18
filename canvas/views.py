@@ -15,6 +15,7 @@ import math
 
 def getContours(image):
     images = np.array(image)
+    
     canny_image = cv2.cvtColor(images, cv2.COLOR_BGR2GRAY)
     edges_canny =  cv2.Canny(canny_image, 7, 51)
     contours, heierarchy = cv2.findContours(edges_canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -51,8 +52,10 @@ def sendImage(request):
         imgB64 = request.POST['imageBase64']
         imgData = re.search(r'base64,(.*)', imgB64).group(1)
         imgPIL = Image.open(io.BytesIO(base64.b64decode(imgData)))
+        paddedImg = ImageOps.expand(imgPIL, border = 10, fill=(255,255,255))
+        flippedImg = paddedImg.transpose(Image.FLIP_LEFT_RIGHT)
         imgArray = np.array(imgPIL.convert('L'))
-        getContours(imgPIL)
+        getContours(flippedImg)
         updateCurrent(imgPIL.copy())
         width = imgArray.shape[1]
         height = imgArray.shape[0]
