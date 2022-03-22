@@ -53,7 +53,7 @@ function Clear() {
 
 //Function run on click of Clear Current button. Clears the Current Submissions image
 function Current() {
-    var url = "http://127.0.0.1:8000/clear";
+    var url = "http://192.168.50.37:8000/clear";
     
     $.ajax({
         type: "POST",
@@ -89,7 +89,7 @@ function Submit() {
     img.click();
     img.delete;*/
 
-    var url = "http://127.0.0.1:8000/submit";
+    var url = "http://192.168.50.37:8000/submit";
 
     var dataURL = canvas.toDataURL();
 
